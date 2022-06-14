@@ -15,9 +15,16 @@ class ListaPokemonViewController: UIViewController {
     
     // MARK: - Variables
     var pokemonManager = PokemonManager()
+    
+    var pokemons: [Pokemon] = []
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //registrar nueva celda
+        tablaPokemon.register(UINib(nibName: "CeldaPokemonTableViewCell", bundle: nil), forCellReuseIdentifier: "celda")
         
         pokemonManager.delegado = self
         
@@ -32,7 +39,11 @@ class ListaPokemonViewController: UIViewController {
 // MARK: - Delegado Pokemon
 extension ListaPokemonViewController: pokemonManagerDelegado {
     func mostrarListaPokemon(lista: [Pokemon]) {
+        pokemons = lista
         
+        DispatchQueue.main.async {
+            self.tablaPokemon.reloadData()
+        }
     }
     
     
@@ -41,12 +52,31 @@ extension ListaPokemonViewController: pokemonManagerDelegado {
 // MARK: - Tabla
 extension ListaPokemonViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return pokemons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let celda = tablaPokemon.dequeueReusableCell(withIdentifier: "celda", for: indexPath)
-        celda.textLabel?.text = "Pikachu"
+        let celda = tablaPokemon.dequeueReusableCell(withIdentifier: "celda", for: indexPath) as! CeldaPokemonTableViewCell
+        
+        celda.nombrePokemon.text = pokemons[indexPath.row].name
+        celda.ataquePokemon.text = "Ataque: \(pokemons[indexPath.row].attack)"
+        celda.defensaPokemon.text = "Defensa: \(pokemons[indexPath.row].defense)"
+        
+        
+        //celda imagen desde URL
+        if let urlString = pokemons[indexPath.row].imageUrl as? String {
+            if let imagenURL = URL(string: urlString) {
+                DispatchQueue.global().async {
+                    guard let imagenData = try? Data(contentsOf: imagenURL) else { return }
+                    let image = UIImage(data: imagenData)
+                    DispatchQueue.main.async {
+                        celda.imagenPokemon.image = image
+                    }
+                }
+            }
+        }
+        
+        
         return celda
     }
     

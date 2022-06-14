@@ -15,6 +15,8 @@
 		60D55EE028581CD700AC43FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D55EDE28581CD700AC43FB /* LaunchScreen.storyboard */; };
 		60D55EE828581E0D00AC43FB /* PokemonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D55EE728581E0D00AC43FB /* PokemonManager.swift */; };
 		60D55EEA28581E4500AC43FB /* DatosPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D55EE928581E4500AC43FB /* DatosPokemon.swift */; };
+		60D55EED2858245C00AC43FB /* CeldaPokemonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D55EEB2858245C00AC43FB /* CeldaPokemonTableViewCell.swift */; };
+		60D55EEE2858245C00AC43FB /* CeldaPokemonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D55EEC2858245C00AC43FB /* CeldaPokemonTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		60D55EE128581CD700AC43FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60D55EE728581E0D00AC43FB /* PokemonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonManager.swift; sourceTree = "<group>"; };
 		60D55EE928581E4500AC43FB /* DatosPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosPokemon.swift; sourceTree = "<group>"; };
+		60D55EEB2858245C00AC43FB /* CeldaPokemonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeldaPokemonTableViewCell.swift; sourceTree = "<group>"; };
+		60D55EEC2858245C00AC43FB /* CeldaPokemonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CeldaPokemonTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				60D55EE128581CD700AC43FB /* Info.plist */,
 				60D55EE728581E0D00AC43FB /* PokemonManager.swift */,
 				60D55EE928581E4500AC43FB /* DatosPokemon.swift */,
+				60D55EEB2858245C00AC43FB /* CeldaPokemonTableViewCell.swift */,
+				60D55EEC2858245C00AC43FB /* CeldaPokemonTableViewCell.xib */,
 			);
 			path = Pokedex;
 			sourceTree = "<group>";
@@ -134,6 +140,7 @@
 				60D55EE028581CD700AC43FB /* LaunchScreen.storyboard in Resources */,
 				60D55EDD28581CD700AC43FB /* Assets.xcassets in Resources */,
 				60D55EDB28581CD400AC43FB /* Main.storyboard in Resources */,
+				60D55EEE2858245C00AC43FB /* CeldaPokemonTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +154,7 @@
 				60D55ED828581CD400AC43FB /* ListaPokemonViewController.swift in Sources */,
 				60D55ED428581CD400AC43FB /* AppDelegate.swift in Sources */,
 				60D55EEA28581E4500AC43FB /* DatosPokemon.swift in Sources */,
+				60D55EED2858245C00AC43FB /* CeldaPokemonTableViewCell.swift in Sources */,
 				60D55ED628581CD400AC43FB /* SceneDelegate.swift in Sources */,
 				60D55EE828581E0D00AC43FB /* PokemonManager.swift in Sources */,
 			);
