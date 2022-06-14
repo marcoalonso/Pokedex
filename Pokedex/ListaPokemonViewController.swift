@@ -18,6 +18,8 @@ class ListaPokemonViewController: UIViewController {
     
     var pokemons: [Pokemon] = []
     
+    var pekemonSeleccionado: Pokemon?
+    
     
 
     override func viewDidLoad() {
@@ -80,5 +82,20 @@ extension ListaPokemonViewController: UITableViewDelegate, UITableViewDataSource
         return celda
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        pekemonSeleccionado = pokemons[indexPath.row]
+        
+        performSegue(withIdentifier: "verPokemon", sender: self)
+        
+        //Deseleccionar
+        tablaPokemon.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "verPokemon" {
+            let verPokemon = segue.destination as! DetallePokemonViewController
+            verPokemon.pokemonMostrar = pekemonSeleccionado
+        }
+    }
     
 }
