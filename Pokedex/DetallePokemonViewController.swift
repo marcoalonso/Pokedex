@@ -40,12 +40,14 @@ extension UIImageView {
     func loadFrom(URLAddres: String) {
         guard let url = URL(string: URLAddres) else { return }
         
-        DispatchQueue.main.async { [weak self] in
-            if let imagenData = try? Data(contentsOf: url) {
-                if let loadedImage = UIImage(data: imagenData) {
-                    self?.image = loadedImage
-                }
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data,
+                  let image = UIImage(data: data) else { return }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.image = image
             }
         }
+        .resume()
     }
 }

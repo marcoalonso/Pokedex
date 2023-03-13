@@ -11,6 +11,10 @@ class ListaPokemonViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var searchBarPokemon: UISearchBar!
+    
+    @IBOutlet weak var searchPokemonTextField: UITextField!
+    
+    
     @IBOutlet weak var tablaPokemon: UITableView!
     
     // MARK: - Variables
@@ -32,7 +36,9 @@ class ListaPokemonViewController: UIViewController {
         
         pokemonManager.delegado = self
         
-        searchBarPokemon.delegate = self
+        /// **DEPRECADA **
+//        searchBarPokemon.delegate = self
+        searchPokemonTextField.delegate = self
         
         tablaPokemon.delegate = self
         tablaPokemon.dataSource = self
@@ -45,23 +51,47 @@ class ListaPokemonViewController: UIViewController {
 }
 
 // MARK: - SearchBar
-extension ListaPokemonViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+/// **DEPRECADA **
+//extension ListaPokemonViewController: UISearchBarDelegate {
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//
+//        pokemonFiltrados = []
+//
+//        if searchText == "" {
+//            pokemonFiltrados = pokemons
+//        } else {
+//            for poke in pokemons {
+//                if poke.name.lowercased().contains(searchText.lowercased()) {
+//                    pokemonFiltrados.append(poke)
+//                }
+//            }
+//        }
+//
+//        self.tablaPokemon.reloadData()
+//
+//    }
+//}
+
+extension ListaPokemonViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         pokemonFiltrados = []
         
-        if searchText == "" {
+        if textField.text == "" {
             pokemonFiltrados = pokemons
         } else {
             for poke in pokemons {
-                if poke.name.lowercased().contains(searchText.lowercased()) {
+                if poke.name.lowercased().contains(textField.text!) {
                     pokemonFiltrados.append(poke)
                 }
             }
         }
-        
         self.tablaPokemon.reloadData()
-        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //Ocultar el teclado
+        textField.endEditing(true)
+        return true
     }
 }
 
